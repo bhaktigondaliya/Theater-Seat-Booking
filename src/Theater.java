@@ -18,6 +18,11 @@ class Theater{
 
         if(seats[row][col] == false){
             System.out.println(username + " booked seat " + row + "," + col);
+            try {
+                Thread.sleep(100);
+            }
+            catch (Exception e) {}
+            
             seats[row][col] = true;
 
         }else{
