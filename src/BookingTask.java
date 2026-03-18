@@ -1,20 +1,36 @@
+import java.util.Random;
+
 public class BookingTask implements Runnable {
-   Theater theater;
-   int row;
-   int col;
-   String username;
 
-    BookingTask(Theater theater, int row, int col, String username){
+    Theater theater;
+    String username;
+
+    BookingTask(Theater theater, String username){
         this.theater = theater;
-        this.row= row;
-        this.col = col;
         this.username = username;
-
     }
 
     public void run(){
-        System.out.println(username + " trying...");
-        theater.bookSeat(row,col,username);
+
+        Random rand = new Random();
+        int count = 3;
+
+        while(count > 0){
+
+            int row = rand.nextInt(theater.rows);
+            int col = rand.nextInt(theater.cols);
+
+            System.out.println(username + " trying seat " + row + "," + col);
+
+            boolean val = theater.bookSeat(row, col, username);
+
+            if(val){
+                return; // success → stop
+            }
+
+            count--; // decrease attempts
+        }
+
+        System.out.println(username + " could not book any seat");
     }
-    
 }

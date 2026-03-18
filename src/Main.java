@@ -2,11 +2,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Theater theater = new Theater(3, 3);
+        Theater theater = new Theater(5, 5);
 
-        BookingTask t1 = new BookingTask(theater, 0, 0, "User1");
-        BookingTask t2 = new BookingTask(theater, 0, 0, "User2");
-        BookingTask t3 = new BookingTask(theater, 1, 1, "User3");
+        BookingTask t1 = new BookingTask(theater,  "User1");
+        BookingTask t2 = new BookingTask(theater,  "User2");
+        BookingTask t3 = new BookingTask(theater,  "User3");
 
         Thread th1 = new Thread(t1);
         Thread th2 = new Thread(t2);
