@@ -19,18 +19,28 @@ class Theater{
         } catch (Exception e) {}
 
         if(seats[row][col] == false){
-            System.out.println(username + " booked seat " + row + "," + col);
-            try {
-                Thread.sleep(100);
-            }
-            catch (Exception e) {}
-            
+            System.out.println("[" + username + "] booked seat (" + row + "," + col + ")");
             seats[row][col] = true;
             return true;
         } 
         else{
-            System.out.println(username + " failed, seat already booked " + row + "," + col);
+            System.out.println("[" + username + "] failed git  seat already booked (" + row + "," + col + ")");
             return false;
+        }
+    }
+
+    void displaySeats(){
+        System.out.println("\nFinal Seat Status:");
+
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                if(seats[i][j]){
+                    System.out.print("X ");
+                } else {
+                    System.out.print("O ");
+                }
+            }
+            System.out.println();
         }
     }
 }

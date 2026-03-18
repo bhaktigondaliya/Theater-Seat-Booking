@@ -13,24 +13,24 @@ public class BookingTask implements Runnable {
     public void run(){
 
         Random rand = new Random();
-        int count = 3;
+        int attempts = 3;
 
-        while(count > 0){
+        while(attempts > 0){
 
             int row = rand.nextInt(theater.rows);
             int col = rand.nextInt(theater.cols);
 
-            System.out.println(username + " trying seat " + row + "," + col);
+            System.out.println("[" + username + "] trying seat (" + row + "," + col + ")");
 
-            boolean val = theater.bookSeat(row, col, username);
+            boolean success = theater.bookSeat(row, col, username);
 
-            if(val){
-                return; // success → stop
+            if(success){
+                return; // stop if booked
             }
 
-            count--; // decrease attempts
+            attempts--;
         }
 
-        System.out.println(username + " could not book any seat");
+        System.out.println("[" + username + "] could not book any seat");
     }
 }
